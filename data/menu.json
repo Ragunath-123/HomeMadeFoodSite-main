@@ -1,0 +1,182 @@
+{
+  "date": "2026-05-29",
+  "whatsappNumber": "918825467578",
+  "menu": [
+    {
+      "id": 1,
+      "name": "Idli",
+      "category": "Breakfast",
+      "type": "Veg",
+      "price": 40,
+      "available": true,
+      "special": false,
+      "description": "Soft steamed rice cakes served with chutney and sambar",
+      "image": "https://images.pexels.com/photos/16297848/pexels-photo-16297848.jpeg?auto=compress&cs=tinysrgb&w=600"
+    },
+    {
+      "id": 2,
+      "name": "Masala Dosa",
+      "category": "Breakfast",
+      "type": "Veg",
+      "price": 60,
+      "available": true,
+      "special": true,
+      "description": "Crispy crepe filled with spiced potato masala",
+      "image": "https://images.pexels.com/photos/55810/pexels-photo-55810.jpeg?auto=compress&cs=tinysrgb&w=600"
+    },
+    {
+      "id": 3,
+      "name": "Poha",
+      "category": "Breakfast",
+      "type": "Veg",
+      "price": 35,
+      "available": true,
+      "special": false,
+      "description": "Flattened rice cooked with peanuts and curry leaves",
+      "image": "https://images.pexels.com/photos/5965954/pexels-photo-5965954.jpeg?auto=compress&cs=tinysrgb&w=600"
+    },
+    {
+      "id": 4,
+      "name": "Upma",
+      "category": "Breakfast",
+      "type": "Veg",
+      "price": 35,
+      "available": true,
+      "special": false,
+      "description": "Semolina porridge with vegetables and mustard seeds",
+      "image": "https://images.pexels.com/photos/6746061/pexels-photo-6746061.jpeg?auto=compress&cs=tinysrgb&w=600"
+    },
+    {
+      "id": 5,
+      "name": "Medu Vada",
+      "category": "Breakfast",
+      "type": "Veg",
+      "price": 50,
+      "available": false,
+      "special": false,
+      "description": "Crispy lentil fritters served with chutney",
+      "image": "https://images.pexels.com/photos/16389571/pexels-photo-16389571.jpeg?auto=compress&cs=tinysrgb&w=600"
+    },
+    {
+      "id": 6,
+      "name": "Chicken Biryani",
+      "category": "Lunch",
+      "type": "Non-Veg",
+      "price": 180,
+      "available": false,
+      "special": true,
+      "description": "Aromatic basmati rice layered with tender chicken and spices",
+      "image": "https://images.pexels.com/photos/12737656/pexels-photo-12737656.jpeg?auto=compress&cs=tinysrgb&w=600"
+    },
+    {
+      "id": 7,
+      "name": "Veg Meals",
+      "category": "Lunch",
+      "type": "Veg",
+      "price": 100,
+      "available": true,
+      "special": false,
+      "description": "Complete South Indian meal with rice, sambar, rasam and sides",
+      "image": "https://images.pexels.com/photos/6941010/pexels-photo-6941010.jpeg?auto=compress&cs=tinysrgb&w=600"
+    },
+    {
+      "id": 8,
+      "name": "Fish Curry Rice",
+      "category": "Lunch",
+      "type": "Non-Veg",
+      "price": 150,
+      "available": true,
+      "special": false,
+      "description": "Fresh fish cooked in tangy coconut curry with steamed rice",
+      "image": "https://images.pexels.com/photos/6889957/pexels-photo-6889957.jpeg?auto=compress&cs=tinysrgb&w=600"
+    },
+    {
+      "id": 9,
+      "name": "Dal Chawal",
+      "category": "Lunch",
+      "type": "Veg",
+      "price": 80,
+      "available": true,
+      "special": false,
+      "description": "Comforting lentil curry served with steamed basmati rice",
+      "image": "https://images.pexels.com/photos/6007790/pexels-photo-6007790.jpeg?auto=compress&cs=tinysrgb&w=600"
+    },
+    {
+      "id": 10,
+      "name": "Mutton Curry",
+      "category": "Lunch",
+      "type": "Non-Veg",
+      "price": 220,
+      "available": true,
+      "special": true,
+      "description": "Slow-cooked tender mutton in rich spicy gravy",
+      "image": "https://images.pexels.com/photos/7619321/pexels-photo-7619321.jpeg?auto=compress&cs=tinysrgb&w=600"
+    },
+    {
+      "id": 11,
+      "name": "Chapati Curry",
+      "category": "Dinner",
+      "type": "Veg",
+      "price": 70,
+      "available": true,
+      "special": false,
+      "description": "Whole wheat flatbread served with mixed vegetable curry",
+      "image": "https://images.pexels.com/photos/6941010/pexels-photo-6941010.jpeg?auto=compress&cs=tinysrgb&w=600"
+    },
+    {
+      "id": 12,
+      "name": "Egg Curry",
+      "category": "Dinner",
+      "type": "Non-Veg",
+      "price": 90,
+      "available": true,
+      "special": false,
+      "description": "Boiled eggs in rich onion-tomato based curry",
+      "image": "https://images.pexels.com/photos/7262763/pexels-photo-7262763.jpeg?auto=compress&cs=tinysrgb&w=600"
+    },
+    {
+      "id": 13,
+      "name": "Paneer Butter Masala",
+      "category": "Dinner",
+      "type": "Veg",
+      "price": 120,
+      "available": true,
+      "special": true,
+      "description": "Cottage cheese cubes in creamy tomato-butter gravy",
+      "image": "https://images.pexels.com/photos/4790603/pexels-photo-4790603.jpeg?auto=compress&cs=tinysrgb&w=600"
+    },
+    {
+      "id": 14,
+      "name": "Pulao",
+      "category": "Dinner",
+      "type": "Veg",
+      "price": 90,
+      "available": true,
+      "special": false,
+      "description": "Fragrant basmati rice cooked with vegetables and whole spices",
+      "image": "https://images.pexels.com/photos/6889957/pexels-photo-6889957.jpeg?auto=compress&cs=tinysrgb&w=600"
+    },
+    {
+      "id": 15,
+      "name": "Chicken Curry",
+      "category": "Dinner",
+      "type": "Non-Veg",
+      "price": 160,
+      "available": false,
+      "special": false,
+      "description": "Home-style chicken curry with aromatic spices",
+      "image": "https://images.pexels.com/photos/7619321/pexels-photo-7619321.jpeg?auto=compress&cs=tinysrgb&w=600"
+    },
+    {
+      "id": 16,
+      "name": "Rasam Rice",
+      "category": "Dinner",
+      "type": "Veg",
+      "price": 60,
+      "available": true,
+      "special": false,
+      "description": "Peppery tamarind broth served with steamed rice",
+      "image": "https://images.pexels.com/photos/6007790/pexels-photo-6007790.jpeg?auto=compress&cs=tinysrgb&w=600"
+    }
+  ]
+}

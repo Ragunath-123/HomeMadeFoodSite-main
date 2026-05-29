@@ -1,0 +1,14 @@
+{
+  "users": [
+    {
+      "mobile": "8825467578",
+      "name": "Admin",
+      "role": "admin"
+    },
+    {
+      "mobile": "8888888888",
+      "name": "Admin Two",
+      "role": "admin"
+    }
+  ]
+}

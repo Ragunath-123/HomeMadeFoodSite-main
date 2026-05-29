@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <title>Admin Panel - Amma's Homemade Foods | Manage Menu</title>
+  <meta name="description" content="Admin panel for managing Amma's Homemade Foods menu items.">
+  <meta name="robots" content="noindex, nofollow">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <i class="fa-solid fa-utensils"></i> Amma's Homemade Foods
+      </a>
+      <div class="d-flex align-items-center gap-2 ms-auto">
+        <span class="user-info d-none" style="font-size:0.85rem;color:var(--gray-600)">
+          <i class="fa-solid fa-user-shield me-1"></i><span class="user-name"></span>
+          <small class="badge rounded-pill ms-1" style="background:var(--curry-orange);color:white;font-size:0.65rem"><span class="user-role"></span></small>
+        </span>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <a href="#" class="btn btn-sm btn-outline-danger logout-btn" title="Logout">
+          <i class="fa-solid fa-right-from-bracket me-1"></i>Logout
+        </a>
+        <a href="index.html" class="btn btn-sm btn-outline-secondary">
+          <i class="fa-solid fa-arrow-left me-1"></i>Back to Site
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Admin Content -->
+  <section class="section-padding section-cream" style="padding-top:100px">
+    <div class="container">
+
+      <!-- Header -->
+      <div class="d-flex flex-wrap justify-content-between align-items-center mb-4">
+        <div>
+          <h1 class="section-title" style="font-size:1.8rem">Menu <span class="section-title-accent">Admin Panel</span></h1>
+          <p style="color:var(--gray-600);font-size:0.9rem;margin:0">Add, edit, or remove food items. Changes are saved in your browser and reflected on the website instantly.</p>
+        </div>
+        <div class="d-flex gap-2 mt-2 mt-md-0">
+          <button class="btn btn-sm btn-outline-secondary" id="btnReset">
+            <i class="fa-solid fa-rotate-left me-1"></i>Reset to Default
+          </button>
+          <button class="btn btn-sm btn-success" id="btnAddNew" style="background:var(--leaf-green);border-color:var(--leaf-green)">
+            <i class="fa-solid fa-plus me-1"></i>Add New Item
+          </button>
+        </div>
+      </div>
+
+      <!-- Stats Row -->
+      <div class="row g-3 mb-4" id="adminStats">
+        <!-- Dynamically filled -->
+      </div>
+
+      <!-- Items Table -->
+      <div class="admin-table-wrapper">
+        <div class="table-responsive">
+          <table class="table table-hover align-middle" id="menuTable">
+            <thead>
+              <tr>
+                <th style="width:50px">ID</th>
+                <th style="width:70px">Image</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Type</th>
+                <th>Price</th>
+                <th style="width:80px">Available</th>
+                <th style="width:70px">Special</th>
+                <th style="width:120px">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="menuTableBody">
+              <!-- Dynamically filled -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Admin Numbers Section -->
+  <section class="section-padding section-light" style="padding-top:40px;padding-bottom:60px">
+    <div class="container">
+      <div class="d-flex flex-wrap justify-content-between align-items-center mb-4">
+        <div>
+          <h2 class="section-title" style="font-size:1.4rem">Admin <span class="section-title-accent">Access</span></h2>
+          <p style="color:var(--gray-600);font-size:0.85rem;margin:0">Manage which mobile numbers can access this admin panel.</p>
+        </div>
+        <button class="btn btn-sm" id="btnAddAdmin" style="background:var(--curry-orange);border-color:var(--curry-orange);color:white">
+          <i class="fa-solid fa-user-plus me-1"></i>Add Admin Number
+        </button>
+      </div>
+      <div class="admin-table-wrapper">
+        <div class="table-responsive">
+          <table class="table table-hover align-middle" id="adminUsersTable">
+            <thead>
+              <tr>
+                <th>Mobile Number</th>
+                <th>Name</th>
+                <th style="width:100px">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="adminUsersBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Add / Edit Modal -->
+  <div class="modal fade" id="itemModal" tabindex="-1" aria-labelledby="itemModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="itemModalLabel">Add Menu Item</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form id="itemForm" novalidate>
+          <div class="modal-body">
+            <input type="hidden" id="editId">
+
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="itemName" class="form-label">Food Name *</label>
+                <input type="text" class="form-control" id="itemName" required placeholder="e.g. Chicken Biryani">
+                <div class="invalid-feedback">Please enter a food name.</div>
+              </div>
+
+              <div class="col-md-3">
+                <label for="itemPrice" class="form-label">Price (INR) *</label>
+                <input type="number" class="form-control" id="itemPrice" required min="1" placeholder="e.g. 150">
+                <div class="invalid-feedback">Please enter a valid price.</div>
+              </div>
+
+              <div class="col-md-3">
+                <label for="itemCategory" class="form-label">Category *</label>
+                <select class="form-select" id="itemCategory" required>
+                  <option value="">Select</option>
+                  <option value="Breakfast">Breakfast</option>
+                  <option value="Lunch">Lunch</option>
+                  <option value="Dinner">Dinner</option>
+                </select>
+                <div class="invalid-feedback">Please select a category.</div>
+              </div>
+
+              <div class="col-md-4">
+                <label for="itemType" class="form-label">Type *</label>
+                <select class="form-select" id="itemType" required>
+                  <option value="Veg">Veg</option>
+                  <option value="Non-Veg">Non-Veg</option>
+                </select>
+              </div>
+
+              <div class="col-md-4">
+                <label class="form-label">Availability</label>
+                <div class="form-check form-switch mt-1">
+                  <input class="form-check-input" type="checkbox" id="itemAvailable" checked>
+                  <label class="form-check-label" for="itemAvailable">Available</label>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <label class="form-label">Today's Special</label>
+                <div class="form-check form-switch mt-1">
+                  <input class="form-check-input" type="checkbox" id="itemSpecial">
+                  <label class="form-check-label" for="itemSpecial">Mark as Special</label>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <label for="itemDescription" class="form-label">Description</label>
+                <textarea class="form-control" id="itemDescription" rows="2" placeholder="Short description of the dish..."></textarea>
+              </div>
+
+              <div class="col-12">
+                <label for="itemImage" class="form-label">Image URL</label>
+                <input type="url" class="form-control" id="itemImage" placeholder="https://images.pexels.com/...">
+                <div class="form-text">Paste a direct image URL. Leave blank for a default placeholder.</div>
+              </div>
+            </div>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-primary" id="btnSaveItem" style="background:var(--curry-orange);border-color:var(--curry-orange)">
+              <i class="fa-solid fa-check me-1"></i>Save Item
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Admin Modal -->
+  <div class="modal fade" id="adminUserModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Add Admin Number</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form id="adminUserForm" novalidate>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="newAdminName" class="form-label">Name *</label>
+              <input type="text" class="form-control" id="newAdminName" required placeholder="e.g. Ravi Kumar">
+              <div class="invalid-feedback">Enter a name.</div>
+            </div>
+            <div class="mb-3">
+              <label for="newAdminMobile" class="form-label">Mobile Number *</label>
+              <div class="input-group">
+                <span class="input-group-text">+91</span>
+                <input type="tel" class="form-control" id="newAdminMobile" required pattern="[0-9]{10}" maxlength="10" placeholder="10-digit number">
+              </div>
+              <div class="invalid-feedback">Enter a valid 10-digit number.</div>
+            </div>
+            <div id="adminUserError" class="alert alert-danger d-none" style="font-size:0.85rem"></div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-sm" style="background:var(--curry-orange);border-color:var(--curry-orange);color:white">
+              <i class="fa-solid fa-user-plus me-1"></i>Add Admin
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Delete Confirm Modal -->
+  <div class="modal fade" id="deleteModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body text-center py-4">
+          <i class="fa-solid fa-triangle-exclamation text-warning" style="font-size:2.5rem"></i>
+          <h5 class="mt-3">Delete Item?</h5>
+          <p style="color:var(--gray-600);font-size:0.9rem">This action cannot be undone.</p>
+          <input type="hidden" id="deleteId">
+          <div class="d-flex justify-content-center gap-2 mt-3">
+            <button class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button class="btn btn-sm btn-danger" id="btnConfirmDelete">
+              <i class="fa-solid fa-trash me-1"></i>Delete
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="position-fixed bottom-0 end-0 p-3" style="z-index:9999">
+    <div id="adminToast" class="toast align-items-center text-bg-success border-0" role="alert">
+      <div class="d-flex">
+        <div class="toast-body" id="toastMessage">Item saved!</div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="margin-top:0;border-top:none">
+        <p>&copy; 2026 Amma's Homemade Foods - Admin Panel</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/auth.js"></script>
+  <script>
+    // Admin guard - redirect if not admin
+    if (!window.AmmaAuth.isAdmin()) {
+      window.location.href = 'login.html';
+    }
+  </script>
+  <script type="module" src="assets/js/admin.js"></script>
+</body>
+</html>
