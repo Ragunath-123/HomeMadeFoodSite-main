@@ -8,7 +8,7 @@
 
   var USERS_KEY = 'ammas_users';
   var AUTH_KEY = 'ammas_auth';
-  var USERS_JSON = '/users.json';
+  var USERS_JSON = 'data/users.json';
 
   // ---- Get current logged-in admin ----
   function getCurrentUser() {
