@@ -6,7 +6,7 @@
   'use strict';
 
   var STORAGE_KEY = 'ammas_menu_data';
-  var DEFAULT_JSON = '/menu.json';
+  var DEFAULT_JSON = 'data/menu.json';
 
   var menuData = [];
   var nextId = 1;
